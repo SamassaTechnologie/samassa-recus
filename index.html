@@ -1,81 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Générateur de Reçus – EDM & SOMAGEP</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMASSA TECHNOLOGIE - Reçus</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <h1>Générateur de Reçus – EDM SA &amp; SOMAGEP SA</h1>
-    <div class="brand">SAMASSA TECHNOLOGIE – Tout pour l’informatique</div>
+  <header>
+    <img src="assets/logo_samassa.png" class="logo-samassa">
+    <h1>SAMASSA TECHNOLOGIE</h1>
+    <p>"Tout pour l’informatique"</p>
+    <small>Grand Marché de Kayes, Rue Soundiata Keita<br>
+      Tél : 00223 77291931 – samassatechnologie10@gmail.com</small>
   </header>
 
-  <main class="container">
-    <nav class="tabs">
-      <button class="tab active" data-tab="edm">Reçu EDM SA</button>
-      <button class="tab" data-tab="somagep">Reçu SOMAGEP SA</button>
-    </nav>
+  <main>
+    <h2>Générateur de Reçus</h2>
+    <form id="receiptForm">
+      <label for="service">Service :</label>
+      <select id="service" name="service" required>
+        <option value="EDM">EDM-SA</option>
+        <option value="SOMAGEP">SOMAGEP-SA</option>
+        <option value="ISAGO">ISAGO</option>
+      </select>
 
-    <section id="edm" class="tabpanel active">
-      <form id="form-edm" class="form">
-        <div class="grid">
-          <label>Référence client <input name="refClient" required></label>
-          <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur / LGT <input name="numCompteur"></label>
-          <label>Numéro facture <input name="numFacture" required></label>
-          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
-          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
-          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
-          <label>ID transaction <input name="idTxn" required></label>
-          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
-        </div>
-        <div class="actions">
-          <button type="button" onclick="generateReceipt('edm')">Générer</button>
-          <button type="button" onclick="printReceipt('edm')">Imprimer</button>
-          <button type="button" onclick="exportPDF('edm')">Exporter PDF</button>
-          <button type="reset">Réinitialiser</button>
-        </div>
-      </form>
+      <label>Référence client :</label>
+      <input type="text" id="refClient" required>
 
-      <div id="preview-edm" class="a4">
-        <!-- Receipt rendered here -->
-      </div>
-    </section>
+      <label>Nom / Contrat :</label>
+      <input type="text" id="clientName" required>
 
-    <section id="somagep" class="tabpanel">
-      <form id="form-somagep" class="form">
-        <div class="grid">
-          <label>Référence client <input name="refClient" required></label>
-          <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur <input name="numCompteur"></label>
-          <label>Numéro facture <input name="numFacture" required></label>
-          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
-          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
-          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
-          <label>ID transaction <input name="idTxn" required></label>
-          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
-        </div>
-        <div class="actions">
-          <button type="button" onclick="generateReceipt('somagep')">Générer</button>
-          <button type="button" onclick="printReceipt('somagep')">Imprimer</button>
-          <button type="button" onclick="exportPDF('somagep')">Exporter PDF</button>
-          <button type="reset">Réinitialiser</button>
-        </div>
-      </form>
+      <label>Numéro compteur :</label>
+      <input type="text" id="numCompteur">
 
-      <div id="preview-somagep" class="a4"></div>
-    </section>
+      <label>Numéro facture :</label>
+      <input type="text" id="numFacture" required>
+
+      <label>Montant (F CFA) :</label>
+      <input type="number" id="montant" required>
+
+      <label>Frais :</label>
+      <input type="number" id="frais" value="0">
+
+      <label>Mode de règlement :</label>
+      <input type="text" id="mode" value="Wave Money" required>
+
+      <label>ID Transaction :</label>
+      <input type="text" id="transaction" required>
+
+      <label>Date / Heure :</label>
+      <input type="datetime-local" id="dateHeure" required>
+
+      <button type="submit">Générer le reçu</button>
+    </form>
+
+    <section id="receiptOutput"></section>
+    <button id="printBtn" style="display:none;">Imprimer / Exporter PDF</button>
   </main>
 
-  <footer class="footer-note">
-    © <span id="year"></span> SAMASSA TECHNOLOGIE – Opérateur de saisie des reçus.
+  <footer>
+    <p>SAMASSA TECHNOLOGIE – Tout pour l’informatique – Opérateur de services de paiement</p>
   </footer>
 
   <script src="app.js"></script>
