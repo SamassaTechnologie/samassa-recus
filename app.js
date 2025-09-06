@@ -36,9 +36,10 @@ function getFormData(scope){
 function buildReceipt(scope){
   const d = getFormData(scope);
   const isEDM = scope === 'edm';
-  // Configuration des entreprises
+  // Configuration des informations par société
   let receiptNo, company, headerRightTop, address, title, logoSrc;
   receiptNo = nextReceiptNumber(isEDM ? 'EDM' : (scope === 'isago' ? 'ISAGO' : 'SOM'));
+  
   if(isEDM){
     company = 'ENERGIE DU MALI - SA';
     headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE';
@@ -129,17 +130,12 @@ function buildReceipt(scope){
     </div>
 
     <div class="footer-operator">
-      <div style="text-align: center; margin-bottom: 8px;">
-        <strong>SAMASSA TECHNOLOGIE – SARL</strong><br>
-        <em>« Tout pour l'informatique »</em>
-      </div>
-      <div style="font-size: 11px; line-height: 1.3;">
-        <strong>Dirigeant :</strong> Boussé Samassa<br>
-        <strong>Secteur :</strong> Maintenance informatique, gestion et solutions numériques<br>
-        <strong>Adresse :</strong> Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita – Kayes, Mali<br>
-        <strong>Téléphone :</strong> +223 77 29 19 31 | <strong>Email :</strong> samassatechnologie10@gmail.com<br>
-        <strong>Service :</strong> SERVICE DE PAIEMENT & FACTURATION – AGENCE VIRTUELLE
-      </div>
+      <div style="font-weight: bold; margin-bottom: 4px;">SAMASSA TECHNOLOGIE – SARL</div>
+      <div style="font-size: 11px; margin-bottom: 2px;">Dirigeant : Boussé Samassa | Secteur : Maintenance informatique, gestion et solutions numériques</div>
+      <div style="font-size: 10px; margin-bottom: 2px;">📍 Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita – Kayes, Mali</div>
+      <div style="font-size: 10px; margin-bottom: 2px;">📞 +223 77 29 19 31 | 📧 samassatechnologie10@gmail.com</div>
+      <div style="font-style: italic; font-size: 10px; margin-bottom: 4px;">« Tout pour l'informatique »</div>
+      <div style="font-size: 11px;">SERVICE DE PAIEMENT & FACTURATION – AGENCE VIRTUELLE</div>
     </div>
     <div class="generated-note">
       Document généré le ${new Date().toLocaleString('fr-FR')} via navigateur.
