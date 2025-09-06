@@ -36,13 +36,26 @@ function getFormData(scope){
 function buildReceipt(scope){
   const d = getFormData(scope);
   const isEDM = scope === 'edm';
-  const receiptNo = nextReceiptNumber(isEDM ? 'EDM' : 'SOM' 'ISAGO');
-  const company = isEDM ? 'ENERGIE DU MALI - SA' : 'SOMAGEP - S.A' : ISAGO.';
-  const headerRightTop = isEDM ? 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE' : 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
-  const address = isEDM ? 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI' : 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE' : 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE' : 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
-  const address = isEDM ? 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI';
-  const title = 'REÇU DE PAIEMENT';
-  const logoSrc = isEDM ? 'assets/logo_edm.png' : 'assets/logo_somagep.png' : 'assets/logo_edm.png';
+  // Correction ici : opérateurs ternaires bien séparés
+  let receiptNo, company, headerRightTop, address, title, logoSrc;
+  receiptNo = nextReceiptNumber(isEDM ? 'EDM' : (scope === 'isago' ? 'ISAGO' : 'SOM'));
+  if(isEDM){
+    company = 'ENERGIE DU MALI - SA';
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE';
+    address = 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI';
+    logoSrc = 'assets/logo_edm.png';
+  } else if(scope === 'isago'){
+    company = 'ISAGO';
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    address = 'Adresse ISAGO'; // Remplacez par l’adresse réelle si nécessaire
+    logoSrc = 'assets/logo_isago.png';
+  } else {
+    company = 'SOMAGEP - S.A';
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    address = 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE';
+    logoSrc = 'assets/logo_somagep.png';
+  }
+  title = 'REÇU DE PAIEMENT';
 
   const dateTxt = new Date(d.dateHeure).toLocaleString('fr-FR');
 
@@ -106,7 +119,10 @@ function buildReceipt(scope){
       <div class="box">MONTANT PAYÉ<br>${d.montantPaye.toLocaleString('fr-FR')} F</div>
     </div>
 
-    <div class="center-msg">${isEDM ? 'EDM-SA vous remercie' : 'SOMAGEP-SA vous remercie : 'EDM-SA vous remercie'}</div>
+    <div class="center-msg">${
+      isEDM ? 'EDM-SA vous remercie'
+      : (scope === 'isago' ? 'ISAGO-SA vous remercie' : 'SOMAGEP-SA vous remercie')
+    }</div>
 
     <div class="barcode-area">
       <svg id="barcode-${scope}"></svg>
@@ -128,8 +144,16 @@ function generateReceipt(scope){
   const form = document.getElementById(`form-${scope}`);
   const data = Object.fromEntries(new FormData(form).entries());
   const isEDM = scope === 'edm';
+  let type;
+  if(isEDM){
+    type = 'EDM';
+  } else if(scope === 'isago'){
+    type = 'ISAGO';
+  } else {
+    type = 'SOM';
+  }
   const recId = preview.querySelector('.receipt-meta div:nth-child(4)').textContent.replace('NUMÉRO REÇU :','').trim();
-  const content = `${isEDM?'EDM':'SOM':'ISAGO'}|${recId}|${data.idTxn}|${data.numFacture}|${data.montant}`;
+  const content = `${type}|${recId}|${data.idTxn}|${data.numFacture}|${data.montant}`;
   JsBarcode(`#barcode-${scope}`, content, {format:'CODE128', displayValue:false, width:2, height:48, margin:0});
 }
 
