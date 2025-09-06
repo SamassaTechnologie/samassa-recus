@@ -3,66 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMASSA TECHNOLOGIE - Reçus</title>
+  <title>Samassa Reçus</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="assets/logo_samassa.png" class="logo-samassa">
-    <h1>SAMASSA TECHNOLOGIE</h1>
-    <p>"Tout pour l’informatique"</p>
-    <small>Grand Marché de Kayes, Rue Soundiata Keita<br>
-      Tél : 00223 77291931 – samassatechnologie10@gmail.com</small>
-  </header>
-
-  <main>
-    <h2>Générateur de Reçus</h2>
+  <div class="container">
+    <h1>Générateur de Reçus - SAMASSA TECHNOLOGIE</h1>
     <form id="receiptForm">
-      <label for="service">Service :</label>
+      <label for="service">Choisir le service :</label>
       <select id="service" name="service" required>
-        <option value="EDM">EDM-SA</option>
-        <option value="SOMAGEP">SOMAGEP-SA</option>
-        <option value="ISAGO">ISAGO</option>
+        <option value="EDM">EDM SA</option>
+        <option value="SOMAGEP">SOMAGEP SA</option>
+        <option value="ISAGO">ISAGO Crédit</option>
       </select>
 
-      <label>Référence client :</label>
-      <input type="text" id="refClient" required>
+      <label for="refClient">Référence Client :</label>
+      <input type="text" id="refClient" name="refClient" required>
 
-      <label>Nom / Contrat :</label>
-      <input type="text" id="clientName" required>
+      <label for="contrat">Nom / Contrat :</label>
+      <input type="text" id="contrat" name="contrat" required>
 
-      <label>Numéro compteur :</label>
-      <input type="text" id="numCompteur">
+      <label for="compteur">Numéro Compteur :</label>
+      <input type="text" id="compteur" name="compteur">
 
-      <label>Numéro facture :</label>
-      <input type="text" id="numFacture" required>
+      <label for="montant">Montant (F CFA) :</label>
+      <input type="number" id="montant" name="montant" required>
 
-      <label>Montant (F CFA) :</label>
-      <input type="number" id="montant" required>
+      <label for="facture">Numéro Facture :</label>
+      <input type="text" id="facture" name="facture">
 
-      <label>Frais :</label>
-      <input type="number" id="frais" value="0">
+      <label for="frais">Frais :</label>
+      <input type="number" id="frais" name="frais" value="0">
 
-      <label>Mode de règlement :</label>
-      <input type="text" id="mode" value="Wave Money" required>
+      <label for="mode">Mode de règlement :</label>
+      <input type="text" id="mode" name="mode" value="Wave" required>
 
-      <label>ID Transaction :</label>
-      <input type="text" id="transaction" required>
+      <label for="transaction">ID Transaction :</label>
+      <input type="text" id="transaction" name="transaction" required>
 
-      <label>Date / Heure :</label>
-      <input type="datetime-local" id="dateHeure" required>
+      <label for="date">Date / Heure :</label>
+      <input type="datetime-local" id="date" name="date" required>
 
-      <button type="submit">Générer le reçu</button>
+      <button type="submit">Générer le Reçu</button>
     </form>
 
-    <section id="receiptOutput"></section>
-    <button id="printBtn" style="display:none;">Imprimer / Exporter PDF</button>
-  </main>
-
-  <footer>
-    <p>SAMASSA TECHNOLOGIE – Tout pour l’informatique – Opérateur de services de paiement</p>
-  </footer>
-
+    <div id="receipt" class="receipt hidden">
+      <div class="header">
+        <img src="assets/logo_samassa.png" class="logo samassa" alt="Logo Samassa">
+        <img id="serviceLogo" class="logo service" alt="Logo Service">
+      </div>
+      <h2 id="serviceTitle"></h2>
+      <p><strong>Référence Client :</strong> <span id="outRefClient"></span></p>
+      <p><strong>Nom / Contrat :</strong> <span id="outContrat"></span></p>
+      <p><strong>Numéro Compteur :</strong> <span id="outCompteur"></span></p>
+      <p><strong>Montant :</strong> <span id="outMontant"></span> F CFA</p>
+      <p><strong>Numéro Facture :</strong> <span id="outFacture"></span></p>
+      <p><strong>Frais :</strong> <span id="outFrais"></span> F CFA</p>
+      <p><strong>Mode de règlement :</strong> <span id="outMode"></span></p>
+      <p><strong>ID Transaction :</strong> <span id="outTransaction"></span></p>
+      <p><strong>Date / Heure :</strong> <span id="outDate"></span></p>
+      <p><strong>Numéro de reçu :</strong> <span id="receiptNumber"></span></p>
+      <div id="qrcode"></div>
+      <footer>
+        SAMASSA TECHNOLOGIE – "Tout pour l’informatique" – Grand Marché de Kayes, près du 1er arrondissement de la police – Rue Soundiata Keita – 00223 77291931 – samassatechnologie10@gmail.com
+      </footer>
+      <button onclick="window.print()">Imprimer</button>
+      <button id="downloadPdf">Télécharger en PDF</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
