@@ -120,8 +120,8 @@ function buildReceipt(scope){
     </div>
 
     <div class="center-msg">${
-      isEDM ? 'EDM-SA vous remercie'
-      : (scope === 'isago' ? 'ISAGO-SA vous remercie' : 'SOMAGEP-SA vous remercie')
+      isEDM ? 'SAMASSA TECHNOLOGIE vous remercie'
+      : (scope === 'isago' ? 'SAMASSA TECHNOLOGIE vous remercie' : 'SAMASSA TECHNOLOGIE vous remercie')
     }</div>
 
     <div class="barcode-area">
@@ -129,7 +129,7 @@ function buildReceipt(scope){
     </div>
 
     <div class="footer-operator">
-      SAMASSA TECHNOLOGIE – Opérateur : génération du reçu via application web.
+      SAMASSA TECHNOLOGIE – Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita, KAYES, MALI Opérateur : génération du reçu via application web.
     </div>
     <div class="generated-note">
       Document généré le ${new Date().toLocaleString('fr-FR')} via navigateur.
