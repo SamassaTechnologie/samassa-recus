@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Générateur de Reçus – EDM & SOMAGEP</title>
+  <title>Générateur de Reçus – EDM; SOMAGEP & ISAGO</title>
   <link rel="stylesheet" href="styles.css" />
   <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -13,7 +13,7 @@
 </head>
 <body>
   <header class="topbar">
-    <h1>Générateur de Reçus – EDM SA &amp; SOMAGEP SA</h1>
+    <h1>Générateur de Reçus – EDM SA &amp; SOMAGEP SA &amp; ISAGO</h1>
     <div class="brand">SAMASSA TECHNOLOGIE – Tout pour l’informatique</div>
   </header>
 
@@ -21,6 +21,7 @@
     <nav class="tabs">
       <button class="tab active" data-tab="edm">Reçu EDM SA</button>
       <button class="tab" data-tab="somagep">Reçu SOMAGEP SA</button>
+      <button class="tab" data-tab="Isago">Reçu ISAGO</button>
     </nav>
 
     <section id="edm" class="tabpanel active">
@@ -71,6 +72,32 @@
       </form>
 
       <div id="preview-somagep" class="a4"></div>
+    </section>
+
+    <section id="Isago" class="tabpanel active">
+      <form id="form-isago" class="form">
+        <div class="grid">
+          <label>Référence client <input name="refClient" required></label>
+          <label>Nom / Contrat <input name="nomContrat" required></label>
+          <label>Numéro compteur / LGT <input name="numCompteur"></label>
+          <label>Numéro facture <input name="numFacture" required></label>
+          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
+          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
+          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
+          <label>ID transaction <input name="idTxn" required></label>
+          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
+        </div>
+        <div class="actions">
+          <button type="button" onclick="generateReceipt('isago')">Générer</button>
+          <button type="button" onclick="printReceipt('isago')">Imprimer</button>
+          <button type="button" onclick="exportPDF('isago')">Exporter PDF</button>
+          <button type="reset">Réinitialiser</button>
+        </div>
+      </form>
+
+      <div id="preview-isago" class="a4">
+        <!-- Receipt rendered here -->
+      </div>
     </section>
   </main>
 
