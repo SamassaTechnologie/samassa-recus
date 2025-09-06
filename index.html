@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Générateur de Reçus – EDM; SOMAGEP; & ISAGO</title>
+  <title>Générateur de Reçus — EDM; SOMAGEP; & ISAGO</title>
   <link rel="stylesheet" href="styles.css" />
   <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -13,8 +13,8 @@
 </head>
 <body>
   <header class="topbar">
-    <h1>Générateur de Reçus – EDM SA &amp; SOMAGEP SA &amp; ISAGO</h1>
-    <div class="brand">SAMASSA TECHNOLOGIE – Tout pour l’informatique</div>
+    <h1>Générateur de Reçus — EDM SA &amp; SOMAGEP SA &amp; ISAGO</h1>
+    <div class="brand">SAMASSA TECHNOLOGIE — Tout pour l'informatique</div>
   </header>
 
   <main class="container">
@@ -36,6 +36,9 @@
           <label for="edm-mode">Mode de règlement <input id="edm-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
           <label for="edm-idTxn">ID transaction <input id="edm-idTxn" name="idTxn" required></label>
           <label for="edm-dateHeure">Date/Heure <input id="edm-dateHeure" type="datetime-local" name="dateHeure" required></label>
+          <label for="edm-vendeur">Vendeur <input id="edm-vendeur" name="vendeur" value="EDM Sarali"></label>
+          <label for="edm-periode">Période <input id="edm-periode" name="periode" placeholder="ex: 202312"></label>
+          <label for="edm-contact">N° Contact <input id="edm-contact" name="contact" placeholder="ex: 79035418"></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('edm')">Générer</button>
@@ -59,6 +62,9 @@
           <label for="somagep-mode">Mode de règlement <input id="somagep-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
           <label for="somagep-idTxn">ID transaction <input id="somagep-idTxn" name="idTxn" required></label>
           <label for="somagep-dateHeure">Date/Heure <input id="somagep-dateHeure" type="datetime-local" name="dateHeure" required></label>
+          <label for="somagep-vendeur">Vendeur <input id="somagep-vendeur" name="vendeur" value="SOMAGEP Agence"></label>
+          <label for="somagep-periode">Période <input id="somagep-periode" name="periode" placeholder="ex: 202312"></label>
+          <label for="somagep-contact">N° Contact <input id="somagep-contact" name="contact" placeholder="ex: 79035418"></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('somagep')">Générer</button>
@@ -79,9 +85,12 @@
           <label for="isago-numFacture">Numéro facture <input id="isago-numFacture" name="numFacture" required></label>
           <label for="isago-montant">Montant (F CFA) <input id="isago-montant" type="number" step="1" name="montant" required></label>
           <label for="isago-frais">Frais (F CFA) <input id="isago-frais" type="number" step="1" name="frais" value="0"></label>
-          <label for="isago-mode">Mode de règlement <input id="isago-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
+          <label for="isago-mode">Mode de règlement <input id="isago-mode" name="mode" value="MOOV"></label>
           <label for="isago-idTxn">ID transaction <input id="isago-idTxn" name="idTxn" required></label>
           <label for="isago-dateHeure">Date/Heure <input id="isago-dateHeure" type="datetime-local" name="dateHeure" required></label>
+          <label for="isago-vendeur">Vendeur <input id="isago-vendeur" name="vendeur" value="ISAGO Agence"></label>
+          <label for="isago-periode">Période <input id="isago-periode" name="periode" placeholder="ex: 202312"></label>
+          <label for="isago-contact">N° Contact <input id="isago-contact" name="contact" placeholder="ex: 79035418"></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('isago')">Générer</button>
@@ -95,7 +104,7 @@
   </main>
 
   <footer class="footer-note">
-    © <span id="year"></span> SAMASSA TECHNOLOGIE – Opérateur de saisie des reçus.
+    © <span id="year"></span> SAMASSA TECHNOLOGIE — Opérateur de saisie des reçus.
   </footer>
 
   <script>
