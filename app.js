@@ -40,18 +40,18 @@ function buildReceipt(scope){
   let receiptNo, company, headerRightTop, address, title, logoSrc;
   receiptNo = nextReceiptNumber(isEDM ? 'EDM' : (scope === 'isago' ? 'ISAGO' : 'SOM'));
   if(isEDM){
-    company = 'ENERGIE DU MALI - SA';
-    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE';
-    address = 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI';
+    company = 'SAMASSA TECHNOLOGIE - SARL';
+    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE VIRTUELLE';
+    address = 'Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita, KAYES, MALI';
     logoSrc = 'assets/logo_edm.png';
   } else if(scope === 'isago'){
     company = 'ISAGO';
-    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE CLIENTÈLE';
     address = 'Adresse ISAGO'; // Remplacez par l’adresse réelle si nécessaire
     logoSrc = 'assets/logo_isago.png';
   } else {
     company = 'SOMAGEP - S.A';
-    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE CLIENTÈLE';
     address = 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE';
     logoSrc = 'assets/logo_somagep.png';
   }
