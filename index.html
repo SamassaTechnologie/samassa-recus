@@ -21,21 +21,21 @@
     <nav class="tabs">
       <button class="tab active" data-tab="edm">Reçu EDM SA</button>
       <button class="tab" data-tab="somagep">Reçu SOMAGEP SA</button>
-      <button class="tab" data-tab="Isago">Reçu ISAGO</button>
+      <button class="tab" data-tab="isago">Reçu ISAGO</button>
     </nav>
 
     <section id="edm" class="tabpanel active">
       <form id="form-edm" class="form">
         <div class="grid">
-          <label>Référence client <input name="refClient" required></label>
-          <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur / LGT <input name="numCompteur"></label>
-          <label>Numéro facture <input name="numFacture" required></label>
-          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
-          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
-          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
-          <label>ID transaction <input name="idTxn" required></label>
-          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
+          <label for="edm-refClient">Référence client <input id="edm-refClient" name="refClient" required></label>
+          <label for="edm-nomContrat">Nom / Contrat <input id="edm-nomContrat" name="nomContrat" required></label>
+          <label for="edm-numCompteur">Numéro compteur / LGT <input id="edm-numCompteur" name="numCompteur"></label>
+          <label for="edm-numFacture">Numéro facture <input id="edm-numFacture" name="numFacture" required></label>
+          <label for="edm-montant">Montant (F CFA) <input id="edm-montant" type="number" step="1" name="montant" required></label>
+          <label for="edm-frais">Frais (F CFA) <input id="edm-frais" type="number" step="1" name="frais" value="0"></label>
+          <label for="edm-mode">Mode de règlement <input id="edm-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
+          <label for="edm-idTxn">ID transaction <input id="edm-idTxn" name="idTxn" required></label>
+          <label for="edm-dateHeure">Date/Heure <input id="edm-dateHeure" type="datetime-local" name="dateHeure" required></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('edm')">Générer</button>
@@ -44,24 +44,21 @@
           <button type="reset">Réinitialiser</button>
         </div>
       </form>
-
-      <div id="preview-edm" class="a4">
-        <!-- Receipt rendered here -->
-      </div>
+      <div id="preview-edm" class="a4"></div>
     </section>
 
     <section id="somagep" class="tabpanel">
       <form id="form-somagep" class="form">
         <div class="grid">
-          <label>Référence client <input name="refClient" required></label>
-          <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur <input name="numCompteur"></label>
-          <label>Numéro facture <input name="numFacture" required></label>
-          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
-          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
-          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
-          <label>ID transaction <input name="idTxn" required></label>
-          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
+          <label for="somagep-refClient">Référence client <input id="somagep-refClient" name="refClient" required></label>
+          <label for="somagep-nomContrat">Nom / Contrat <input id="somagep-nomContrat" name="nomContrat" required></label>
+          <label for="somagep-numCompteur">Numéro compteur <input id="somagep-numCompteur" name="numCompteur"></label>
+          <label for="somagep-numFacture">Numéro facture <input id="somagep-numFacture" name="numFacture" required></label>
+          <label for="somagep-montant">Montant (F CFA) <input id="somagep-montant" type="number" step="1" name="montant" required></label>
+          <label for="somagep-frais">Frais (F CFA) <input id="somagep-frais" type="number" step="1" name="frais" value="0"></label>
+          <label for="somagep-mode">Mode de règlement <input id="somagep-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
+          <label for="somagep-idTxn">ID transaction <input id="somagep-idTxn" name="idTxn" required></label>
+          <label for="somagep-dateHeure">Date/Heure <input id="somagep-dateHeure" type="datetime-local" name="dateHeure" required></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('somagep')">Générer</button>
@@ -70,22 +67,21 @@
           <button type="reset">Réinitialiser</button>
         </div>
       </form>
-
       <div id="preview-somagep" class="a4"></div>
     </section>
 
     <section id="isago" class="tabpanel">
       <form id="form-isago" class="form">
         <div class="grid">
-          <label>Référence client <input name="refClient" required></label>
-          <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur <input name="numCompteur"></label>
-          <label>Numéro facture <input name="numFacture" required></label>
-          <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
-          <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
-          <label>Mode de règlement <input name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
-          <label>ID transaction <input name="idTxn" required></label>
-          <label>Date/Heure <input type="datetime-local" name="dateHeure" required></label>
+          <label for="isago-refClient">Référence client <input id="isago-refClient" name="refClient" required></label>
+          <label for="isago-nomContrat">Nom / Contrat <input id="isago-nomContrat" name="nomContrat" required></label>
+          <label for="isago-numCompteur">Numéro compteur <input id="isago-numCompteur" name="numCompteur"></label>
+          <label for="isago-numFacture">Numéro facture <input id="isago-numFacture" name="numFacture" required></label>
+          <label for="isago-montant">Montant (F CFA) <input id="isago-montant" type="number" step="1" name="montant" required></label>
+          <label for="isago-frais">Frais (F CFA) <input id="isago-frais" type="number" step="1" name="frais" value="0"></label>
+          <label for="isago-mode">Mode de règlement <input id="isago-mode" name="mode" value="PAIEMENT EN LIGNE (Wave Money)"></label>
+          <label for="isago-idTxn">ID transaction <input id="isago-idTxn" name="idTxn" required></label>
+          <label for="isago-dateHeure">Date/Heure <input id="isago-dateHeure" type="datetime-local" name="dateHeure" required></label>
         </div>
         <div class="actions">
           <button type="button" onclick="generateReceipt('isago')">Générer</button>
@@ -94,7 +90,6 @@
           <button type="reset">Réinitialiser</button>
         </div>
       </form>
-
       <div id="preview-isago" class="a4"></div>
     </section>
   </main>
@@ -103,6 +98,10 @@
     © <span id="year"></span> SAMASSA TECHNOLOGIE – Opérateur de saisie des reçus.
   </footer>
 
+  <script>
+    // Script pour afficher l'année courante dans le footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
