@@ -36,12 +36,13 @@ function getFormData(scope){
 function buildReceipt(scope){
   const d = getFormData(scope);
   const isEDM = scope === 'edm';
-  const receiptNo = nextReceiptNumber(isEDM ? 'EDM' : 'SOM');
-  const company = isEDM ? 'ENERGIE DU MALI - SA' : 'SOMAGEP - S.A.';
+  const receiptNo = nextReceiptNumber(isEDM ? 'EDM' : 'SOM' 'ISAGO');
+  const company = isEDM ? 'ENERGIE DU MALI - SA' : 'SOMAGEP - S.A' : ISAGO.';
   const headerRightTop = isEDM ? 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE' : 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
-  const address = isEDM ? 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI' : 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE';
+  const address = isEDM ? 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI' : 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE' : 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE' : 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+  const address = isEDM ? 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI';
   const title = 'REÇU DE PAIEMENT';
-  const logoSrc = isEDM ? 'assets/logo_edm.png' : 'assets/logo_somagep.png';
+  const logoSrc = isEDM ? 'assets/logo_edm.png' : 'assets/logo_somagep.png' : 'assets/logo_edm.png';
 
   const dateTxt = new Date(d.dateHeure).toLocaleString('fr-FR');
 
@@ -105,7 +106,7 @@ function buildReceipt(scope){
       <div class="box">MONTANT PAYÉ<br>${d.montantPaye.toLocaleString('fr-FR')} F</div>
     </div>
 
-    <div class="center-msg">${isEDM ? 'EDM-SA vous remercie' : 'SOMAGEP-SA vous remercie'}</div>
+    <div class="center-msg">${isEDM ? 'EDM-SA vous remercie' : 'SOMAGEP-SA vous remercie : 'EDM-SA vous remercie'}</div>
 
     <div class="barcode-area">
       <svg id="barcode-${scope}"></svg>
@@ -128,7 +129,7 @@ function generateReceipt(scope){
   const data = Object.fromEntries(new FormData(form).entries());
   const isEDM = scope === 'edm';
   const recId = preview.querySelector('.receipt-meta div:nth-child(4)').textContent.replace('NUMÉRO REÇU :','').trim();
-  const content = `${isEDM?'EDM':'SOM'}|${recId}|${data.idTxn}|${data.numFacture}|${data.montant}`;
+  const content = `${isEDM?'EDM':'SOM':'ISAGO'}|${recId}|${data.idTxn}|${data.numFacture}|${data.montant}`;
   JsBarcode(`#barcode-${scope}`, content, {format:'CODE128', displayValue:false, width:2, height:48, margin:0});
 }
 
