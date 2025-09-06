@@ -36,23 +36,23 @@ function getFormData(scope){
 function buildReceipt(scope){
   const d = getFormData(scope);
   const isEDM = scope === 'edm';
-  // Correction ici : opérateurs ternaires bien séparés
+  // Configuration des entreprises
   let receiptNo, company, headerRightTop, address, title, logoSrc;
   receiptNo = nextReceiptNumber(isEDM ? 'EDM' : (scope === 'isago' ? 'ISAGO' : 'SOM'));
   if(isEDM){
-    company = 'SAMASSA TECHNOLOGIE - SARL';
-    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE VIRTUELLE';
-    address = 'Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita, KAYES, MALI';
+    company = 'ENERGIE DU MALI - SA';
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE VIRTUELLE';
+    address = 'SQUARE PATRICE LUMUMBA, B.P.69, BAMAKO, MALI';
     logoSrc = 'assets/logo_edm.png';
   } else if(scope === 'isago'){
     company = 'ISAGO';
-    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE CLIENTÈLE';
-    address = 'Adresse ISAGO'; // Remplacez par l’adresse réelle si nécessaire
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    address = 'Adresse ISAGO'; // Remplacez par l'adresse réelle si nécessaire
     logoSrc = 'assets/logo_isago.png';
   } else {
     company = 'SOMAGEP - S.A';
-    headerRightTop = 'SERVICE DE PAIEMENT & FACTURATION\nAGENCE CLIENTÈLE';
-    address = 'SOCIÉTÉ MALIENNE DE GESTION DE L’EAU POTABLE';
+    headerRightTop = 'DIRECTION COMMERCIALE\nAGENCE CLIENTÈLE';
+    address = 'SOCIÉTÉ MALIENNE DE GESTION DE L\'EAU POTABLE';
     logoSrc = 'assets/logo_somagep.png';
   }
   title = 'REÇU DE PAIEMENT';
@@ -120,8 +120,8 @@ function buildReceipt(scope){
     </div>
 
     <div class="center-msg">${
-      isEDM ? 'SAMASSA TECHNOLOGIE vous remercie'
-      : (scope === 'isago' ? 'SAMASSA TECHNOLOGIE vous remercie' : 'SAMASSA TECHNOLOGIE vous remercie')
+      isEDM ? 'EDM-SA vous remercie'
+      : (scope === 'isago' ? 'ISAGO-SA vous remercie' : 'SOMAGEP-SA vous remercie')
     }</div>
 
     <div class="barcode-area">
@@ -129,7 +129,17 @@ function buildReceipt(scope){
     </div>
 
     <div class="footer-operator">
-      SAMASSA TECHNOLOGIE – Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita, KAYES, MALI Opérateur : génération du reçu via application web.
+      <div style="text-align: center; margin-bottom: 8px;">
+        <strong>SAMASSA TECHNOLOGIE – SARL</strong><br>
+        <em>« Tout pour l'informatique »</em>
+      </div>
+      <div style="font-size: 11px; line-height: 1.3;">
+        <strong>Dirigeant :</strong> Boussé Samassa<br>
+        <strong>Secteur :</strong> Maintenance informatique, gestion et solutions numériques<br>
+        <strong>Adresse :</strong> Grand Marché de Kayes, près du 1er arrondissement de la police, Rue Soundiata Keita – Kayes, Mali<br>
+        <strong>Téléphone :</strong> +223 77 29 19 31 | <strong>Email :</strong> samassatechnologie10@gmail.com<br>
+        <strong>Service :</strong> SERVICE DE PAIEMENT & FACTURATION – AGENCE VIRTUELLE
+      </div>
     </div>
     <div class="generated-note">
       Document généré le ${new Date().toLocaleString('fr-FR')} via navigateur.
