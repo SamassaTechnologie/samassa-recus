@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Générateur de Reçus – EDM; SOMAGEP & ISAGO</title>
+  <title>Générateur de Reçus – EDM; SOMAGEP; & ISAGO</title>
   <link rel="stylesheet" href="styles.css" />
   <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -74,12 +74,12 @@
       <div id="preview-somagep" class="a4"></div>
     </section>
 
-    <section id="Isago" class="tabpanel active">
+    <section id="isago" class="tabpanel">
       <form id="form-isago" class="form">
         <div class="grid">
           <label>Référence client <input name="refClient" required></label>
           <label>Nom / Contrat <input name="nomContrat" required></label>
-          <label>Numéro compteur / LGT <input name="numCompteur"></label>
+          <label>Numéro compteur <input name="numCompteur"></label>
           <label>Numéro facture <input name="numFacture" required></label>
           <label>Montant (F CFA) <input type="number" step="1" name="montant" required></label>
           <label>Frais (F CFA) <input type="number" step="1" name="frais" value="0"></label>
@@ -95,9 +95,7 @@
         </div>
       </form>
 
-      <div id="preview-isago" class="a4">
-        <!-- Receipt rendered here -->
-      </div>
+      <div id="preview-isago" class="a4"></div>
     </section>
   </main>
 
